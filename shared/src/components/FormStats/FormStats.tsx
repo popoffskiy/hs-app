@@ -1,6 +1,7 @@
-import {Button, Col, Empty, Form, Input, Row, Select} from "antd"
-import {useFieldArray} from 'react-final-form-arrays'
-import {StatsType} from "../../enum"
+import React from 'react'
+import { Button, Col, Empty, Form, Input, Row, Select } from 'antd'
+import { useFieldArray } from 'react-final-form-arrays'
+import { StatsType } from '../../enum'
 
 type Props = {
     name: string,
@@ -8,8 +9,17 @@ type Props = {
 }
 
 export const FormStats = (props: Props) => {
-    const {placeholder, name} = props
-    const {fields, fields: {push, remove}} = useFieldArray(name)
+    const {
+        placeholder,
+        name
+    } = props
+    const {
+        fields,
+        fields: {
+            push,
+            remove
+        }
+    } = useFieldArray(name)
 
     const handleAdd = () => {
         push({
@@ -18,25 +28,32 @@ export const FormStats = (props: Props) => {
         })
     }
 
-    const getStatsOptions = () => Object.keys(StatsType).map((item) => (
-        {
-            label: item,
-            value: item
-        }
-    ))
+    const getStatsOptions = () => Object.keys(StatsType)
+        .map((item) => (
+            {
+                label: item,
+                value: item
+            }
+        ))
 
     const getAddButton = () => <Button type="primary" onClick={handleAdd}>Add stat</Button>
 
     const getContent = () => (
         <>
-            {fields.map((field, index) => getItem({field, index}))}
+            {fields.map((field, index) => getItem({
+                field,
+                index
+            }))}
             {getAddButton()}
         </>
     )
 
-    const getItem = ({field, index}: { field: any, index: number }) => <Row
+    const getItem = ({
+        field,
+        index
+    }: { field: any, index: number }) => <Row
         gutter={[16, 16]}
-        style={{paddingBottom: 20}}
+        style={{ paddingBottom: 20 }}
         key={index.toString()}
     >
         <Col span={11}>
@@ -44,7 +61,8 @@ export const FormStats = (props: Props) => {
                 showSearch
                 options={getStatsOptions()}
                 optionFilterProp="children"
-                filterOption={(input, option) => option?.value?.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                filterOption={(input, option) => option?.value?.toLowerCase()
+                    .indexOf(input.toLowerCase()) >= 0}
             />
         </Col>
         <Col span={11}><Input/></Col>

@@ -1,11 +1,15 @@
-import React from "react"
-import {Table} from "antd"
+import React from 'react'
+import { Table } from 'antd'
 
-const columns: never[] = [];
+const columns: never[] = []
 
-export const ItemTable = (props: any) => {
+type Props = {
+    dataSource: []
+}
 
-    const {dataSource} = props
+export const ItemTable: React.FC<Props> = (props: Props) => {
+
+    const { dataSource } = props
 
     return <Table dataSource={dataSource} columns={columns}/>
 }

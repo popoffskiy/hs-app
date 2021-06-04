@@ -3,21 +3,23 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-} from "react-router-dom"
-import {ItemListPage} from "./pages"
-import {NavBar, NavBarType} from "@hs/shared";
-import {Layout} from "antd";
+} from 'react-router-dom'
+import { NavBar, NavBarType, } from '@hs/shared'
+import { Layout, } from 'antd'
+import { ItemListPage, } from './pages'
 
-const {Header, Content} = Layout;
+const {
+    Header,
+    Content,
+} = Layout
 
-function App() {
-
+export const App: React.FC = () => {
     const navItems: NavBarType[] = [
         {
             key: 'home',
             path: '/',
-            title: 'Home'
-        }
+            title: 'Home',
+        },
     ]
 
     return (
@@ -26,7 +28,7 @@ function App() {
                 <Header>
                     <NavBar items={navItems}/>
                 </Header>
-                <Content style={{padding: '0 50px'}}>
+                <Content style={{ padding: '0 50px', }}>
                     <Switch>
                         <Route path="/">
                             <ItemListPage/>
@@ -35,7 +37,7 @@ function App() {
                 </Content>
             </Router>
         </Layout>
-    );
+    )
 }
 
-export default App;
+export default App

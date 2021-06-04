@@ -1,1 +1,1 @@
-export {ItemListPage} from './ItemListPage'
+export { default as ItemListPage, } from './ItemListPage'

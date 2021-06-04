@@ -24,7 +24,7 @@ export enum StatsType {
     INCREASE_DAMAGE = 'increase_damage',
     ATTACKSPEED = 'attackspeed',
     MANA_PER_HIT = 'mana_per_hit',
-    LIFE_PER_hit = 'life_per_hit',
+    LIFE_PER_HIT = 'life_per_hit',
     REDUCTION = 'reduction',
     MANA_REG = 'mana_reg',
     HP_REG = 'hp_reg',

@@ -1,47 +1,71 @@
-import React, {useState} from "react"
-import {Card, Tabs, Button, Modal} from "antd";
-import {ItemTable} from "./ItemTable";
-import {ItemsType} from "@hs/shared";
-import {AddItem} from "./AddItem/AddItem";
+import React, { useEffect, useState, } from 'react'
+import {
+    Card, Tabs, Button, Modal,
+} from 'antd'
+import { ItemsType, } from '@hs/shared'
+import { connect, } from 'react-redux'
+import { ItemTable, } from './ItemTable'
+import AddItem from './AddItem/AddItem'
+import { getItems, } from '../../store/items'
 
-const {TabPane} = Tabs
+const { TabPane, } = Tabs
 
-export const ItemListPage = () => {
-    const [activeKey, setActiveKey] = useState(Object.keys(ItemsType)[0])
-    const [showModal, setShowModal] = useState(false)
+type Props = {
+    getItems: () => void
+}
 
-    const handleTabChange = (activeKey: string) => {
-        setActiveKey(activeKey)
+export const ItemListPage: React.FC<Props> = (props: Props) => {
+    const { getItems, } = props
+    const [activeKey, setActiveKey,] = useState(Object.keys(ItemsType,)[0],)
+    const [showModal, setShowModal,] = useState(false,)
+
+    useEffect(() => {
+        getItems()
+    }, [getItems,],)
+
+    const handleTabChange = (activeKey: string,) => {
+        setActiveKey(activeKey,)
     }
 
     const handleModalShow = () => {
-        setShowModal(true)
+        setShowModal(true,)
     }
 
     const handleModalHide = () => {
-        setShowModal(false)
+        setShowModal(false,)
     }
 
-    const getExtraContent = () => <Button
-        type="primary"
-        onClick={handleModalShow}
-    >
-        Add item
-    </Button>
+    const handleModalOk = () => {
+        const element = document.getElementById('item-form')
+        element?.dispatchEvent(new Event('submit', {
+            cancelable: true,
+            bubbles: true
+        }))
+    }
+
+    const getExtraContent = () => (
+        <Button
+            type="primary"
+            onClick={handleModalShow}
+        >
+            Add item
+        </Button>
+    )
 
     return (
         <>
-            <Card style={{margin: '50px 0'}}>
+            <Card style={{ margin: '50px 0', }}>
                 <Tabs
                     defaultActiveKey={activeKey}
                     onChange={handleTabChange}
                     tabBarExtraContent={getExtraContent()}
                 >
-                    {Object.keys(ItemsType).map((item: string) => (
-                        <TabPane tab={item} key={item}>
-                            <ItemTable/>
-                        </TabPane>
-                    ))}
+                    {Object.keys(ItemsType,)
+                        .map((item: string,) => (
+                            <TabPane tab={item} key={item}>
+                                <ItemTable dataSource={[]}/>
+                            </TabPane>
+                        ),)}
                 </Tabs>
             </Card>
             <Modal
@@ -49,7 +73,7 @@ export const ItemListPage = () => {
                 width={900}
                 visible={showModal}
                 onCancel={handleModalHide}
-                onOk={handleModalHide}
+                onOk={handleModalOk}
                 maskClosable={false}
             >
                 <AddItem currentTab={activeKey}/>
@@ -57,3 +81,9 @@ export const ItemListPage = () => {
         </>
     )
 }
+
+const mapDispatchToProps = {
+    getItems,
+}
+
+export default connect(null, mapDispatchToProps,)(ItemListPage,)

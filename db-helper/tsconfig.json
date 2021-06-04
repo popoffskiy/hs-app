@@ -22,5 +22,10 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "baseUrl": ".",
+  "paths": {
+    "@hs/shared": ["../shared/src"],
+    "@hs/shared/*": ["../shared/src/*"],
+  }
 }

@@ -1,47 +1,69 @@
-import {Form} from 'react-final-form'
-import {Form as AntdForm} from 'antd'
+import React from 'react'
+import { Form } from 'react-final-form'
+import { Form as AntdForm } from 'antd'
 import arrayMutators from 'final-form-arrays'
-import {FormInput, FormSelect, ItemsType, RarityType, TierType, DamageType, FormStats} from "@hs/shared";
+import { connect } from 'react-redux'
+import {
+    FormInput,
+    FormSelect,
+    ItemsType,
+    RarityType,
+    TierType,
+    DamageType,
+    FormStats
+} from '@hs/shared'
+import { postItems } from '../../../store/items/actions'
 
 type Props = {
-    currentTab: string
+    currentTab: string,
+    postItems: (data: []) => void,
 }
 
-export const AddItem = (props: Props) => {
-    const {currentTab} = props
+export const AddItem: React.FC<Props> = (props: Props) => {
+    const {
+        currentTab,
+        postItems
+    } = props
 
-    const handleSubmit = () => {
+    const onSubmit = (data: []) => {
+        postItems(data)
     }
 
-    const getItemTypeOptions = () => (Object.keys(ItemsType).map((item) => ({
-        key: item,
-        title: item
-    })))
+    const getItemTypeOptions = () => (Object.keys(ItemsType)
+        .map((item) => ({
+            key: item,
+            title: item
+        })))
 
-    const getRarityTypeOptions = () => (Object.keys(RarityType).map((item) => ({
-        key: item,
-        title: item
-    })))
+    const getRarityTypeOptions = () => (Object.keys(RarityType)
+        .map((item) => ({
+            key: item,
+            title: item
+        })))
 
-    const getTierTypeOptions = () => (Object.keys(TierType).map((item) => ({
-        key: item,
-        title: item
-    })))
+    const getTierTypeOptions = () => (Object.keys(TierType)
+        .map((item) => ({
+            key: item,
+            title: item
+        })))
 
-    const getDamageTypeOptions = () => (Object.keys(DamageType).map((item) => ({
-        key: item,
-        title: item
-    })))
+    const getDamageTypeOptions = () => (Object.keys(DamageType)
+        .map((item) => ({
+            key: item,
+            title: item
+        })))
 
     return (
         <Form
-            onSubmit={handleSubmit}
+            onSubmit={onSubmit}
             mutators={{
                 ...arrayMutators
             }}
-            render={() => (
-                <AntdForm
-                    layout="vertical"
+            render={({handleSubmit}) => (
+                <form
+                    id="item-form"
+                    // layout="vertical"
+                    onSubmit={handleSubmit}
                 >
                     <FormInput name='name' placeholder='Name'/>
                     <FormSelect
@@ -70,8 +92,14 @@ export const AddItem = (props: Props) => {
                         name='stats'
                         placeholder='Item stats'
                     />
-                </AntdForm>
+                </form>
             )}
         />
     )
 }
+
+const mapDispatchToProps = {
+    postItems
+}
+
+export default connect(null, mapDispatchToProps)(AddItem)
