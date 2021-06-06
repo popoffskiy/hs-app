@@ -1,0 +1,118 @@
+.character-box {
+  background: repeating-linear-gradient(45deg, #0a0807,#0a0807 6px,#000 6px,#000 12px);  
+  box-shadow: 0 0 0 2px #3c2b2c, 0 0 0 4px #1f0507;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 3px 1px;
+
+  &__wrapper {
+    padding: 8px;
+    margin: 22px;
+    background: repeating-linear-gradient(#9b263a,#9b263a 40px,#63141b 40px,#63141b 42px); 
+    box-shadow: 0 0 0 2px #3c2b2c, 0 0 0 4px #000, 0 0 0 6px #090606, 0 0 0 7px #8d7475, 0 0 0 9px #594748, 0 0 0 11px #140c0d, 0 0 0 17px #1c1314, 0 0 0 19px #614e4f, 0 0 0 21px #3c2b2c, 0 0 0 22px #000;
+  }
+
+  &__top-line {
+    height: 11px;
+    background: linear-gradient(90deg, rgba(31,5,7,1) 0%, rgba(155,38,58,1) 50%, rgba(31,5,7,1) 100%);
+    border: 2px solid #3c2b2c;
+    border-bottom:2px solid #1c1314;
+    border-top:2px solid #8d7475;
+    position: absolute;
+    top: -14px;
+    left: -19px;
+    right: -19px;
+    box-shadow: 0 0 0 1px #000;
+  }
+
+  &__content {
+    position: relative;
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    margin-top: 15px;
+  }
+
+  .item + &__content:before {
+    content: "";
+    height: 4px;
+    background: repeating-linear-gradient(90deg,#9b263a, #9b263a 40px, #63141b 40px, #63141b 42px);
+    position: absolute;
+    left: -7px;
+    right: -7px;
+    top: -10px;
+  }
+
+  &__skill {
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+    font-size: 18px;
+
+    &:before {
+      content: "";
+      background: linear-gradient(90deg, #000 85%, rgba(0,0,0,0) 100%);
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 18px;
+      z-index: -1;
+    }
+
+    &s-list {
+      list-style: none;
+      color: #5b69d6;
+      margin: 0 15px;
+      padding: 0;
+
+      &--ability {
+        color: #ffa040;
+      }
+    }
+
+    &-value {
+      color: #c097a7;
+      margin-right: 5px;
+    }
+  }
+
+  &__stat {
+    float: left;
+    width: 50%;
+    padding: 0 0 0 15px;
+
+    &--empty {
+      opacity: 0;
+    }
+  
+    span + &-value {
+      margin-left: 5px;
+      color: #c097a7;
+    }
+
+    &-value.blue {
+      color: #5b69d6;
+    }
+
+    &-value.yellow {
+      color: #ff4800;
+    }
+
+    &s-list {
+      color: #c7b377;
+      font-size: 18px;
+      list-style: none;
+      padding: 0;
+  
+      &--wrapper {
+        position: absolute;
+        bottom: 15px;
+        left: 0;
+        right: 0;
+      }
+    }
+  }
+}
+
