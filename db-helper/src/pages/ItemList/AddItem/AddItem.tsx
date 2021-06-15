@@ -1,6 +1,5 @@
 import React from 'react'
 import { Form } from 'react-final-form'
-import { Form as AntdForm } from 'antd'
 import arrayMutators from 'final-form-arrays'
 import { connect } from 'react-redux'
 import {

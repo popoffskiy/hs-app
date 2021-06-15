@@ -30,14 +30,26 @@
       "jsx": true
     },
     "ecmaVersion": 11,
+    "project": "./tsconfig.json",
     "sourceType": "module"
   },
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "resolve": {
+      "extensions": ["", ".js", ".jsx", ".scss", ".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "eslint-import-resolver-typescript": true
+      }
     }
   },
   "rules": {
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [
       1,
@@ -53,6 +65,19 @@
       "error",
       "never"
     ],
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "react/jsx-props-no-spreading": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
   }
 }

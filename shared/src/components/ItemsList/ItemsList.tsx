@@ -17,7 +17,7 @@ type ItemsListType = {
 export const ItemsList = (props: ItemsListType) => (
     <div className="items-list">
         {props.items.map(item => (
-            <Item {...item} handleClick={props.handleClick} />
+            <Item key={item.name} {...item} handleClick={props.handleClick} />
         ))}
     </div>
 )
