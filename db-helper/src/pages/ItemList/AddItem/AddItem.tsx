@@ -9,7 +9,8 @@ import {
     RarityType,
     TierType,
     DamageType,
-    FormStats
+    FormStats,
+    WeaponType,
 } from '@hs/shared'
 import { postItems } from '../../../store/items/actions'
 
@@ -52,6 +53,12 @@ export const AddItem: React.FC<Props> = (props: Props) => {
             title: item
         })))
 
+    const getWeaponTypeOptions = () => (Object.keys(WeaponType)
+        .map((item) => ({
+            key: item,
+            title: item
+        })))
+
     return (
         <Form
             onSubmit={onSubmit}
@@ -87,9 +94,22 @@ export const AddItem: React.FC<Props> = (props: Props) => {
                         options={getDamageTypeOptions()}
                         mode="multiple"
                     />
+                    <FormSelect
+                        name='weaponType'
+                        placeholder='Weapon type'
+                        options={getWeaponTypeOptions()}
+                    />
                     <FormStats
                         name='stats'
                         placeholder='Item stats'
+                    />
+                    <FormStats
+                        name='ability'
+                        placeholder='Item abilities'
+                    />
+                    <FormStats
+                        name='props'
+                        placeholder='Item properties'
                     />
                 </form>
             )}
