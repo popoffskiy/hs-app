@@ -2,29 +2,18 @@
   "env": {
     "browser": true,
     "commonjs": true,
-    "es6": true
+    "es2020": true,
+    "jest": true,
+    "serviceworker": true
   },
-  "parser": "@typescript-eslint/parser",
   "extends": [
-    "eslint:recommended",
-    "airbnb",
-    "airbnb/hooks",
-    "plugin:react/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:jest/all",
+    "plugin:testing-library/react"
   ],
-  "plugins": [
-    "react",
-    "react-hooks",
-    "@typescript-eslint"
-  ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -45,8 +34,10 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
         "eslint-import-resolver-typescript": true
       }
-    }
+    },
+    "project": "./tsconfig.json"
   },
+  "root": true,
   "rules": {
     "import/prefer-default-export": "off",
     "import/no-unresolved": "off",
@@ -78,6 +69,8 @@
         "ts": "never",
         "tsx": "never"
       }
-    ]
+    ],
+    "camelcase": "error",
+    "no-console": "warn"
   }
 }

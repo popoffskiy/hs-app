@@ -4,7 +4,7 @@ import {
     Switch,
     Route,
 } from 'react-router-dom'
-import { NavBar, NavBarType, } from '@hs/shared'
+import { NavBar, NavBarType, SharedThemeWrapper, } from '@hs/shared'
 import { Layout, } from 'antd'
 import { ItemListPage, } from './pages'
 
@@ -23,20 +23,22 @@ export const App: React.FC = () => {
     ]
 
     return (
-        <Layout>
-            <Router>
-                <Header>
-                    <NavBar items={navItems}/>
-                </Header>
-                <Content style={{ padding: '0 50px', }}>
-                    <Switch>
-                        <Route path="/">
-                            <ItemListPage/>
-                        </Route>
-                    </Switch>
-                </Content>
-            </Router>
-        </Layout>
+        <SharedThemeWrapper>
+            <Layout>
+                <Router>
+                    <Header>
+                        <NavBar items={navItems}/>
+                    </Header>
+                    <Content style={{ padding: '0 50px', }}>
+                        <Switch>
+                            <Route path="/">
+                                <ItemListPage/>
+                            </Route>
+                        </Switch>
+                    </Content>
+                </Router>
+            </Layout>
+        </SharedThemeWrapper>
     )
 }
 

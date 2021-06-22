@@ -12,16 +12,16 @@ function App() {
     {
       key: 'home',
       path: '/',
-      title: 'Home',
-    },
+      title: 'Home'
+    }
   ]
 
   return (
     <Router>
-      <NavBar items={navItems} />
+      <NavBar items={navItems}/>
       <Switch>
         <Route path="/">
-          <HomePage />
+          <HomePage/>
         </Route>
       </Switch>
     </Router>

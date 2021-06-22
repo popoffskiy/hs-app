@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "bootstrap": "yarn install && cd ./shared/ && yarn run build",
-    "start-app": "cd ./app && yarn run start",
-    "start-db-helper": "cd ./db-helper && yarn run start",
-    "watch-shared": "cd ./shared && yarn run watch"
+    "start-app": "cd ./app && yarn start",
+    "start-db-helper": "cd ./db-helper && yarn start",
+    "watch-shared": "cd ./shared && yarn watch",
+    "start-backend": "cd ./backend && yarn start"
   },
   "workspaces": [
     "app",
