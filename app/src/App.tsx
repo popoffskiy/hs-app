@@ -3,9 +3,9 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-} from "react-router-dom"
-import {HomePage} from "./pages"
-import {NavBar, NavBarType} from "@hs/shared";
+} from 'react-router-dom'
+import { HomePage } from './pages'
+import { NavBar, NavBarType } from '@hs/shared'
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
                 </Route>
             </Switch>
         </Router>
-    );
+    )
 }
 
-export default App;
+export default App
