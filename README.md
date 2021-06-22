@@ -1,3 +1,3 @@
 # Init Project
 
-### `npm run bootstrap`
+### `yarn run bootstrap`

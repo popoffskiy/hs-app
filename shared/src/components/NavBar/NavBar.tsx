@@ -17,14 +17,9 @@ export const NavBar = (props: Props) => {
         current: initialKey
     })
 
-    const handleClick = ({ key }: { key: string; }) => {
-        setState(() => ({ current: key }))
-    }
-
     return (
         <Menu
             theme="dark"
-            onClick={handleClick}
             selectedKeys={[state.current]}
             mode="horizontal"
         >
@@ -33,7 +28,8 @@ export const NavBar = (props: Props) => {
                 title,
                 path
             }) => (
-                <Menu.Item key={key}>
+                <Menu.Item
+                    key={key}>
                     <Link to={path}>{title}</Link>
                 </Menu.Item>
             ))}
